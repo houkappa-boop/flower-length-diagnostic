@@ -4,8 +4,8 @@ from pathlib import Path
 repo=Path(__file__).resolve().parent
 assert platform.system()=='Linux'
 archive=repo/'linux-quiescence.zip'
-assert hashlib.sha256(archive.read_bytes()).hexdigest()=='a20e6bd938d44680b6c023794bbcf60149fde7c944efa85b14054d5b4e206c4c'
-print('QUIESCENCE_ARCHIVE '+'a20e6bd938d44680b6c023794bbcf60149fde7c944efa85b14054d5b4e206c4c',flush=True)
+assert hashlib.sha256(archive.read_bytes()).hexdigest()=='d5888ca3d6707ae761242677231b221df72ff249b41d2851b7fde48419bc9768'
+print('QUIESCENCE_ARCHIVE '+'d5888ca3d6707ae761242677231b221df72ff249b41d2851b7fde48419bc9768',flush=True)
 with tempfile.TemporaryDirectory(prefix='flower-verification-build-') as scratch:
     base=Path(scratch);pack=base/'pack'
     with zipfile.ZipFile(archive) as z:
