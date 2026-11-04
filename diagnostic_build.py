@@ -3,9 +3,9 @@ import os,sys,subprocess,tempfile,zipfile,hashlib,platform
 from pathlib import Path
 repo=Path(__file__).resolve().parent
 assert platform.system()=='Linux'
-archive=repo/'controller-isolation.zip'
-assert hashlib.sha256(archive.read_bytes()).hexdigest()=='f568f0b84d7b62f56e56b2778003649123a9a39640da2fe02e108ba43035a602'
-print('QUIESCENCE_ARCHIVE '+'f568f0b84d7b62f56e56b2778003649123a9a39640da2fe02e108ba43035a602',flush=True)
+archive=repo/'preparation-isolation.zip'
+assert hashlib.sha256(archive.read_bytes()).hexdigest()=='73dd07bc8718f55f7534c9fb1f2845ec18092ebf83d17896a96b6d27c2511b0a'
+print('QUIESCENCE_ARCHIVE '+'73dd07bc8718f55f7534c9fb1f2845ec18092ebf83d17896a96b6d27c2511b0a',flush=True)
 with tempfile.TemporaryDirectory(prefix='flower-verification-build-') as scratch:
     base=Path(scratch);pack=base/'pack'
     with zipfile.ZipFile(archive) as z:
@@ -18,4 +18,4 @@ with tempfile.TemporaryDirectory(prefix='flower-verification-build-') as scratch
     subprocess.run([str(py),'-m','pip','install','--index-url','https://pypi.org/simple','--only-binary=:all:','--retries','1','--timeout','30','-r',str(pack/'verification/requirements-linux.txt')],env=clean,check=True,timeout=300)
     clean['PATH']=str(venv/'bin')+os.pathsep+clean['PATH']
     clean['PYTHONPATH']=str(pack/'verification')+os.pathsep+str(pack/'verification/candidate')
-    subprocess.run([str(py),str(pack/'verification/controller_linux.py')],env=clean,check=True,timeout=90)
+    subprocess.run([str(py),str(pack/'verification/preparation_linux.py')],env=clean,check=True,timeout=90)
