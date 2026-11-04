@@ -4,8 +4,8 @@ from pathlib import Path
 repo=Path(__file__).resolve().parent
 assert platform.system()=='Linux'
 archive=repo/'exit-isolation.zip'
-assert hashlib.sha256(archive.read_bytes()).hexdigest()=='270fd7759582efc77e1a06c0fe9783f776788082be2383767f96d10681d269db'
-print('QUIESCENCE_ARCHIVE '+'270fd7759582efc77e1a06c0fe9783f776788082be2383767f96d10681d269db',flush=True)
+assert hashlib.sha256(archive.read_bytes()).hexdigest()=='e7eaf4731c1b5800b2471f90d84fe650d7184cc17ea9e1f256b4a7b23d9b5994'
+print('QUIESCENCE_ARCHIVE '+'e7eaf4731c1b5800b2471f90d84fe650d7184cc17ea9e1f256b4a7b23d9b5994',flush=True)
 with tempfile.TemporaryDirectory(prefix='flower-verification-build-') as scratch:
     base=Path(scratch);pack=base/'pack'
     with zipfile.ZipFile(archive) as z:
